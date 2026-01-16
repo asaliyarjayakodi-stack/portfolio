@@ -4,8 +4,125 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Landing Page</title>
-<link rel="stylesheet" href="style.css">
+
+<style>
+@font-face {
+  font-family: "Dilini";
+  src: url("Dilini.ttf");
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  background: linear-gradient(120deg,#050816,#0a0f2c);
+  color: white;
+  overflow-x: hidden;
+}
+
+.hero {
+  min-height: 100vh;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+}
+
+/* Sinhala Heading */
+.sinhala-title {
+  font-family: "Dilini";
+  font-size: 42px;
+  color: #ffffff;
+  position: absolute;
+  left: 5%;
+  top: 30%;
+  z-index: 3;
+  line-height: 1.5;
+  text-shadow: 0 0 12px cyan;
+}
+
+/* Person Image */
+.bg-person {
+  position: absolute;
+  bottom: 0;
+  right: 5%;
+  height: 90%;
+  object-fit: contain;
+  opacity: 0.9;
+  z-index: 1;
+}
+
+/* Main Content */
+.content {
+  z-index: 2;
+  max-width: 700px;
+}
+
+.content h1 {
+  font-size: 60px;
+  margin-bottom: 10px;
+}
+
+.content p {
+  font-size: 20px;
+  opacity: 0.8;
+  margin-bottom: 40px;
+}
+
+/* Tiles */
+.tiles {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.tile {
+  background: rgba(255,255,255,0.1);
+  backdrop-filter: blur(10px);
+  padding: 25px;
+  text-align: center;
+  border-radius: 15px;
+  font-size: 18px;
+  cursor: pointer;
+  transition: 0.4s;
+  border: 1px solid rgba(255,255,255,0.2);
+}
+
+.tile:hover {
+  transform: translateY(-10px) scale(1.05);
+  background: rgba(0,255,255,0.2);
+  box-shadow: 0 0 20px cyan;
+}
+
+/* Mobile */
+@media(max-width:900px){
+  .tiles {
+    grid-template-columns: repeat(2,1fr);
+  }
+
+  .bg-person {
+    height: 60%;
+    right: 0;
+    opacity: 0.5;
+  }
+
+  .sinhala-title {
+    font-size: 28px;
+    top: 10%;
+  }
+
+  .content h1 {
+    font-size: 40px;
+  }
+}
+</style>
 </head>
+
 <body>
 
 <section class="hero">
@@ -22,7 +139,7 @@
 
   <!-- Main Content -->
   <div class="content">
-    <h1>740000/=</h1>
+    <h1>Welcome</h1>
     <p>Creative | Developer | Designer</p>
 
     <div class="tiles">
@@ -37,6 +154,19 @@
 
 </section>
 
-<script src="script.js"></script>
+<script>
+const tiles = document.querySelectorAll(".tile");
+
+tiles.forEach(tile => {
+  tile.addEventListener("mouseenter", () => {
+    tile.style.letterSpacing = "2px";
+  });
+
+  tile.addEventListener("mouseleave", () => {
+    tile.style.letterSpacing = "0px";
+  });
+});
+</script>
+
 </body>
 </html>
